@@ -1,0 +1,93 @@
+Task 3
+Step1: Learn to read a network diagram
+
+@A1
+config t
+int e0/0
+switchport mode access
+switchport access vlan 10
+end
+
+show vlan brief
+
+@A2
+config t
+int e1/0
+switchport mode access
+switchport access vlan 10
+end
+
+Step 2: Learn how to find the right gateway
+cisco : show ip route
+micrsoft: route print
+linux: netstat -rn
+
+
+TASK 4
+
+Cisco: ip route 0.0.0.0 0.0.0.0 192.168.1.129
+
+
+R1
+config t 
+interface loopback 1
+ip add 1.1.1.1 255.255.255.255
+router ospf 1
+router-id 1.1.1.1
+network 1.1.1.1 0.0.0.0 area 0
+network 10.1.1.0 0.0.0.3 area 0
+interface e1/0
+ip ospf priority 0
+end
+
+
+
+
+
+HOW TO CONFIG REALWORLD BGP
+
+config t
+router bgp 1
+bgp router-id 207.7.7.1
+bgp log-neighbor-changes
+neighbor 209.9.9.3 remote-as 3
+neighbor 207.7.7.2 remote-as 2
+neighbor 208.8.8.4 remote-as 45
+network 10.1.1.0 mask 255.255.255.252
+network 209.9.9.1 mask 255.255.255.0
+network 208.8.8.1 mask 255.255.255.0
+network 207.7.7.1 mask 255.255.255.0
+end
+
+
+
+
+
+cybersecurity OSI (attack.mitre.org)_
+
+PHYSICAL LAYE: WIRED WIFI FOC
+
+powershell
+netsh wlan show profile name="3F-Rivan" key=clear
+
+L2: mac address
+L3: nmap -sP 10.3.3.0/24
+L4: Port address
+netstat -ano
+	windows ports - 135 & 445
+cd\
+nmap -v <IP add>
+	
+L5: ATTACKING PORT 139 or IPC$ SMB Session
+	net use \\10.3.3.141\ipc$
+	net use x: /delete
+	net use x: \\10.3.3.141\c$
+	
+	PS C:\> netstat -n -p tcp | findstr 445
+	
+L6: Presentation
+	virus/malware: exe, .vbs, .bat, .py
+
+L7: APPLICATION: explorer.exe
+
+	
