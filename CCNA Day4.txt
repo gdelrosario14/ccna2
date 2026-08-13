@@ -1,0 +1,213 @@
+
+
+@IR_ELASTICS
+
+root
+C1sc0123
+
+ping 192.168.102.133
+
+sytemctl restart elasticsearch.service
+
+
+broweser:
+http://192.168.102.133:5601
+
+credentials
+admin
+C1sc0123
+
+
+TASK1: NOC vs SOC
+
+
+TASK: Cisco Cyber Security
+
+C: Confidentiality: data must be encrypted
+
+
+A: Availability
+
+
+i: Integrity: data must not be altered.
+			  hashcode: md5 or SHA256
+
+
+labexam: Encrypt using publickeys:
+
+!Create a public key:
+
+config t
+ip domain name keykeymo
+crypto key generate rsa modulus 1024
+
+
+TASK2: How to start a cyber security career
+
+secureMind > secureENV > secureNET
+
+
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+25/tcp   open  smtp
+53/tcp   open  domain
+80/tcp   open  http
+110/tcp  open  pop3
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+143/tcp  open  imap
+445/tcp  open  microsoft-ds
+587/tcp  open  submission
+902/tcp  open  iss-realsecure
+912/tcp  open  apex-mesh
+3000/tcp open  ppp
+5985/tcp open  wsman
+
+
+How to configure Firewall Policy
+	PROTOCOL                 HACKER             VICTIM                PORT
+	TCP, udp, icmp, IP       any                bet10/bet11.com        
+	
+	
+	
+config t
+NO ip access-list extended FW1
+ip access-list extended FW1
+	permit tcp any host bet10.com eq 80
+	permit tcp any host bet10.com eq 443
+	permit tcp any host bet11.com eq 80
+	permit tcp any host bet11.com eq 443
+	interface gi 3
+	ip access-group FW1 in
+	
+	do show ip access-list FW1
+	
+	
+	bet10  443. 53, 22
+	bet11 2000, 5000
+	
+	config t
+NO ip access-list extended FW2
+ip access-list extended FW2
+	permit tcp any host bet10.com eq 53
+	permit tcp any host bet10.com eq 22
+	permit tcp any host bet10.com eq 443
+	permit tcp any host bet11.com eq 2000
+	permit tcp any host bet11.com eq 5000
+	permit icmp any host bet11.com
+	
+	interface gi 3
+	ip access-group FW1 in
+	
+	do show ip access-list FW1
+	
+	
+	APOYPADER3
+	
+	bet10  HTTPS, ping
+	bet11 DNS, SSH
+	
+	
+	config t
+NO ip access-list extended APOYPADER3
+ip access-list extended APOYPADER3
+	permit tcp any host bet11.com eq 22
+	permit tcp any host bet10.com eq 443
+	permit tcp any host bet11.com eq 53
+	permit icmp any host bet10.com
+	
+	interface gi 3
+	ip access-group APOYPADER3 in
+	
+	do show ip access-list APOYPADER3
+	
+	
+		config t
+NO ip access-list extended APOYPADER4
+ip access-list extended APOYPADER4
+	permit tcp any host bet10.com eq 22
+	permit tcp any host bet10.com eq 23
+	permit tcp any host bet10.com eq 80
+	permit icmp any host bet10.com
+	permit tcp any host bet11.com eq 443
+	permit tcp any host bet11.com eq 2000
+	permit tcp any host bet11.com eq 1720
+	permit tcp any host bet11.com eq 5060
+
+		interface gi 3
+	ip access-group APOYPADER4 in
+	
+	do show ip access-list APOYPADER4
+	
+	
+	
+HIDING behind a firewall Proxy
+	REAL IP              REAL PORT          FAKE IP         FAKE PORT
+	192.168.103.10        80,443             208.8.8.69      80 8443
+    192.168.103.11         80,443             208.8.8.69      443 8080
+	
+config t
+no access-list 8
+access-list 8 permit host 192.168.103.10
+access-list 8 permit host 192.168.103.11
+ip host betlog.com 208.8.8.69
+Int Gi 3
+ ip nat Inside
+Int gi 1
+ ip nat Outside
+IP Nat inside source static tcp 192.168.103.10 80 208.8.8.69 80
+IP Nat inside source static tcp 192.168.103.10 443 208.8.8.69 8443
+IP Nat inside source static tcp 192.168.103.11 80 208.8.8.69 8080
+IP Nat inside source static tcp 192.168.103.11 443 208.8.8.69 443
+IP nat inside source list 8 int gi 1 Overload
+end
+show ip nat translation
+
+
+c:\\windows\system32\drivers\etc
+
+USING Network Time Server
+216.239.35.0
+
+config t
+ntp server 216.239.35.0
+end
+sh ntp assoc
+sh ntp status
+show ntp associations detail
+
+
+CAFE:FACE:FAFA::5151
+
+fafa:dada:dede:caca::5151
+
+CAFE:afec:FEC::/44
+
+
+1. a:c::/64
+2. ::/64
+3. fe80::a:0:0:f/64
+4. 2002:6500:0:3000::/64
+5. ::1/128
+6. ff00::beef:a00a:aa0:0:0/8
+
+
+BINARY to HEX to DECIMAL: touch your siopao
+
+subne: 2001:fd8:2f2::/48 into 32 offices"
+				SMmain				SMBulacn   				SMCagayan				SMinda
+				4096				 256					  32		         	512
+
+Convert:         2r12					2r8						2r5                  2r9
+ADD:			/48+12					/48+8					/48+5				/48+9
+				/60						/56						/53					/57
+			
+iFinger:        3rdSi1					2ndSi1					2ndSi8             3rdSi8
+
+				8 4 2 1   				8 4 2 1 		     	8 4 2 1  		   8 4 2 1 
+				
+				
+				0000					 0000					  0000 				0000
+				0010					 0100					  0800     			0080
+				0020					 0200					  1000				0100
