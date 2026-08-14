@@ -1,0 +1,89 @@
+TASK1:
+
+Catalyst
+core: 9500 or 9600
+distri: 9500x, 9300x, 9400x
+access: 9200x, x=10g
+
+
+SPECIALIZING IN SWITCH:
+
+Master the 4 super Hereos of Switching
+Qpid: 802.1Q:trunking
+"make switch love each other!"LQ
+
+
+Darna: 802.1d: STP
+"slowly protect switches" , wait 30 seconds 
+lis=15, lrn=15s, fwd: or blk.
+
+
+WonderWoman: 802.1w: rapidSTP
+"quickly,Brutally protect switches"
+
+
+SuperMan: 802.1s: MiSTP
+"Protect Many Switches at the same time!"
+
+
+DARNA   vs  WW
+802.1d		802.1W
+blk			discarding
+lis         learning
+lrn			tx/rx
+fwd			.001sec/
+30s
+
+
+C1:C2
+config t
+Int Range e0/1-3,e1/1-2,e2/1-2
+ shutdown
+ switchport trunk Encap Dot1Q
+ switchport mode trunk
+ switchport trunk allowed vlan 1-100
+ switchport trunk native vlan 1
+ no shut
+ do sh int trunk
+ 
+ 
+ how to kill cisco switch
+ 
+ 
+ sudo su
+ yesinia -G
+ 
+ 
+ 
+Multiple instance STP: 802.1s
+Make FORCEs all CPU/Instances work to protect VLANs, cpu0 = is working 
+step1: sync all Vlans with VTP:vlanTrunkingProtocol:
+
+
+STED - switchport trunk encapsulation dot1q
+SMT - switchport mode trunk
+STAV - switchport trunk allowed vlan  <no.>
+STANV - switchport trunk allowed native vlan <#>
+
+CGMA -  channel-group 1 mode active
+CuPaL - channel-protocol Lacp
+
+
+config t
+hostname coretaasPLDT
+Track 1 Int gi 0/1 line-protocol
+Int vlan 1
+standby 1 ip 10.51.1.6
+standby 1 preempt
+standby 1 Priority 150
+standby 1 Track 1 decrement 60
+
+
+
+config t
+hostname corebabaGLOBE
+Int vlan 1
+standby 1 ip 10.51.1.6
+standby 1 preempt
+standby 1 Priority 100
+end
